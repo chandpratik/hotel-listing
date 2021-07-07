@@ -1,28 +1,44 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
 import Home from './components/Home';
+import Details from './components/Details';
 import useFetch from './hooks/useFetch';
+import formatData from './helper/formatData';
 
 function App() {
   const { response } = useFetch(
     'http://www.mocky.io/v2/5a7f23442e00005000b56873'
   );
 
-  const { response: Res2 } = useFetch(
+  const { response: response2 } = useFetch(
     'http://www.mocky.io/v2/5a7f24f02e00005200b56875'
   );
   // const { data } = response;
 
-  if (!Res2 || !response) {
+  if (!response2 || !response) {
     return <div>Loading...</div>;
   }
-  const { data } = response;
-  const { data: priceData } = Res2;
+  const { data: hotelsData } = response;
+  const { data: priceData } = response2;
+  const combinedData = formatData([...hotelsData, ...priceData]);
+  const combinedDataArray = Object.values(combinedData);
 
-  // data.map(({ id }) => <h1 key={id}>{id}</h1>)
-
-  return <Home combinedData={[...data, ...priceData]} />;
+  return (
+    <Router>
+      <Route
+        path="/"
+        exact
+        render={() => <Home combinedDataArray={combinedDataArray} />}
+      />
+      <Route
+        path="/details"
+        exact
+        render={() => <Details combinedData={combinedData} />}
+      />
+    </Router>
+  );
 }
 
 export default App;
