@@ -1,12 +1,19 @@
 import React from 'react';
 import Header from './Header';
-import formatData from '../helper/formatData';
+import HotelCard from './HotelCard';
+// import formatData from '../helper/formatData';
 
-const Home = ({ combinedData }) => {
-  const data = formatData(combinedData);
-  console.log(data);
-  return <Header />;
-  // return data.map(({ id, name, price }) => <h1 key={id}>{name}</h1>);
+const Home = ({ combinedDataArray }) => {
+  return (
+    <>
+      <Header />
+      <div className="container max-w-full flex-column justify-center mt-10">
+        {combinedDataArray.map(data => (
+          <HotelCard data={data} key={data.id} />
+        ))}
+      </div>
+    </>
+  );
 };
 
 export default Home;

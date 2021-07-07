@@ -5,7 +5,7 @@ const formatData = combinedData => {
       : (obj[item.id] = { ...item });
     return obj;
   }, {});
-  return Object.values(arrayHashmap);
+  return arrayHashmap;
 };
 
 export default formatData;
