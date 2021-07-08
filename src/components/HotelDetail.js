@@ -1,9 +1,10 @@
 import React from 'react';
+import Policy from './Policy';
 
 const HotelDetail = ({ hotelData, policies, essentials }) => {
   return (
-    <div className="container max-w-full h-screen flex  justify-center items-center">
-      <div className="h-2/5 w-2/5 text-center bg-white shadow-md">
+    <div className="container max-w-full h-screen flex-column justify-center items-center mt-10">
+      <div className="h-2/5 w-2/5 mx-auto text-center bg-white shadow-md">
         <h1 className="uppercase tracking-wide text-xl text-indigo-500 font-extrabold">
           {hotelData.name}
         </h1>
@@ -12,6 +13,7 @@ const HotelDetail = ({ hotelData, policies, essentials }) => {
           {hotelData.locality ? hotelData.city : ''}
         </h2>
       </div>
+      <Policy policies={policies} />
     </div>
   );
 };
