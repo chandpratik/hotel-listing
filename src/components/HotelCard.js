@@ -1,8 +1,10 @@
 import React from 'react';
 import { useHistory } from 'react-router';
+import lowestCost from '../helper/lowestCost';
 
 const HotelCard = ({ data }) => {
   let history = useHistory();
+  const displayPrice = lowestCost(data.price);
 
   function handleClick() {
     localStorage.setItem('hotelId', data.id);
@@ -19,16 +21,16 @@ const HotelCard = ({ data }) => {
           />
         </div>
         <div className="p-8">
-          <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+          <div className="uppercase tracking-wide text-md text-indigo-500 font-semibold">
             {data.name}
           </div>
-          <p className="block mt-1 text-lg leading-tight font-medium text-black ">
+          <p className="block mt-1 text-sm leading-tight font-medium text-black ">
             {data.locality ? data.locality + ', ' : data.city}
             {data.locality ? data.city : ''}
           </p>
 
           <p className="text-sm text-indigo-500" onClick={handleClick}>
-            {data.price.oak ? data.price.oak : 'Sold Out'}
+            {displayPrice ? displayPrice : 'Sold Out'}
           </p>
         </div>
         <div className="p-8"></div>

@@ -1,7 +1,6 @@
 import React from 'react';
-import Header from './Header';
-import HotelCard from './HotelCard';
-// import formatData from '../helper/formatData';
+import Header from '../components/Header';
+import HotelCard from '../components/HotelCard';
 
 const Home = ({ combinedDataArray }) => {
   return (
