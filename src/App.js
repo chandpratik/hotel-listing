@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './App.css';
 
 import Home from './pages/Home';
 import Details from './pages/Details';
+
 import useFetch from './hooks/useFetch';
 import formatData from './helper/formatData';
 

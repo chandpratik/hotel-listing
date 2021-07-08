@@ -2,7 +2,7 @@ import React from 'react';
 
 const Room = ({ room, price }) => {
   return (
-    <div className="flex ">
+    <div className="flex max-w-xs justify-between">
       <h2
         className={`text-sm font-medium ${
           price ? 'text-black' : 'text-gray-500'
